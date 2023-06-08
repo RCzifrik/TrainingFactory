@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class GuestController extends AbstractController
 {
     #[Route('/', name: 'guest_home')]
-    public function index(): Response
+    public function home(): Response
     {
         return $this->render('guest/index.html.twig', [
             'controller_name' => 'GuestController',
