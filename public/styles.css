@@ -1,0 +1,9 @@
+.nav-link {
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
+.nav-link:hover {
+    transition: 100ms;
+    border: 3px solid black;
+}
