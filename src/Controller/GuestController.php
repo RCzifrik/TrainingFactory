@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\RegisterType;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -28,9 +33,25 @@ class GuestController extends AbstractController
     }
 
     #[Route('/register', name: 'guest_register')]
-    public function register(): Response
+    public function register(ManagerRegistry $doctrine, Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
-        return $this->render('guest/register.html.twig');
+        $entitymanager = $doctrine->getManager();
+        $user = new User();
+        $user->setRoles(["ROLE_MEMBER"]);
+        $user->get
+        $form = $this->createForm(RegisterType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+            $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
+            $user->setPassword($hashedPassword);
+            $entitymanager->persist($user);
+            $entitymanager->flush();
+            return $this->redirectToRoute('guest_login');
+        }
+        return $this->renderForm('guest/register.html.twig', [
+            'form' => $form
+        ]);
     }
 
     #[Route('/contact', name: 'guest_contact')]
