@@ -9,14 +9,14 @@
                     <form method="post">
                         <label>Username</label>
                         <br>
-                        <input type="text" name="username" value="" placeholder="lIlIIlllIlIllIlIlIllI" class="my-2">
+                        <input type="text" name="_username" value="" placeholder="|II|I||II||I|II|I||I|II||II|I||II||I|II||II|I||I|II|I||II||I|II|" class="my-2">
                         <br>
                         <label>Password</label>
                         <br>
-                        <input type="text" name="password" value="" placeholder="********" class="my-2">
-                        <input type="hidden" name="_target_path" value="/">
+                        <input type="password" name="_password" value="" placeholder="********" class="my-2">
+                        <input type="hidden" name="_target_path" value="{{ path('redirect') }}">
                         <br>
-                        <a type="submit" class="btn btn-primary d-flex justify-content-center my-3 mx-4">Login</a>
+                        <a type="submit" class="d-flex justify-content-center my-3 mx-4"><button class="btn btn-primary w-75">Login</button></a>
                     </form>
                 </div>
             </div>
