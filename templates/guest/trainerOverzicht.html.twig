@@ -1,6 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1 class="text-center my-5">
-        In development
-    </h1>
+    <div class="container-lg">
+        <div class="row">
+            {% for trainer in trainers %}
+                <div class="col-12">
+                    <div class="card my-2">
+                        <div class="card-body">
+                            <h2 class="text-center">Big boy body for trainer {{ trainer.firstname }} {{ trainer.lastname }}</h2>
+                            <h3 class="text-center"></h3>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

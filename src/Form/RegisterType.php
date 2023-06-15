@@ -5,10 +5,9 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,7 +19,7 @@ class RegisterType extends AbstractType
             ->add('username')
             ->add('password', PasswordType::class)
             ->add('firstname')
-            ->add('preprovision')
+            ->add('preprovision', TextType::class, array('required' => false, 'empty_data' => null))
             ->add('lastname')
             ->add('dateofbirth', BirthdayType::class)
             ->add('street')
