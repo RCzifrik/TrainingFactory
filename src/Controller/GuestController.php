@@ -62,7 +62,7 @@ class GuestController extends AbstractController
     #[Route('/trainerOverzicht', name: 'guest_trainerOverzicht')]
     public function trainerOverzicht(ManagerRegistry $doctrine, Request $request): Response
     {
-        $trainer = $doctrine->getRepository(User::class)->findBy(['roles' => $this->getUser()]);
+        $trainer = $doctrine->getRepository(User::class)->findBy(['street' => ""]);
 
         return $this->render('guest/trainerOverzicht.html.twig', [
             'trainers' => $trainer
