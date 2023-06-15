@@ -1,6 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1 class="text-center my-5">
-        In development
-    </h1>
+    <div class="container-lg my-5">
+        <div class="row">
+            {% for training in trainings %}
+                <div class="col-4 p-2">
+                    <div class="card text-center">
+                        <h3>{{ training.description }}</h3>
+                        <h4>Lengte training: {{ training.duration }} minuten</h4>
+                        <p class=""><i>Extra kosten van €{{ training.extra_costs|number_format(2, ',', '.') }} worden bij inschrijven in rekening gebracht</i></p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

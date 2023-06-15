@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Training;
 use App\Entity\User;
 use App\Form\RegisterType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -60,7 +61,7 @@ class GuestController extends AbstractController
     }
 
     #[Route('/trainerOverzicht', name: 'guest_trainerOverzicht')]
-    public function trainerOverzicht(ManagerRegistry $doctrine, Request $request): Response
+    public function trainerOverzicht(ManagerRegistry $doctrine): Response
     {
         $trainer = $doctrine->getRepository(User::class)->findBy(['street' => ""]);
 
@@ -76,9 +77,14 @@ class GuestController extends AbstractController
     }
 
     #[Route('/trainingOverzicht', name: 'guest_trainingOverzicht')]
-    public function trainingOverzicht(): Response
+    public function trainingOverzicht(ManagerRegistry $doctrine): Response
     {
-        return $this->render('guest/trainingOverzicht.html.twig');
+
+        $training = $doctrine->getRepository(Training::class)->findAll();
+
+        return $this->render('guest/trainingOverzicht.html.twig', [
+            'trainings' => $training
+        ]);
     }
 
     #[Route('/trainingDetail', name: 'guest_trainingDetail')]
