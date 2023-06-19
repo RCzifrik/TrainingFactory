@@ -26,10 +26,10 @@ class Lesson
     private ?string $location = null;
 
     #[ORM\Column]
-    private ?int $max_people = null;
+    public ?int $max_people = null;
 
     #[ORM\ManyToOne(inversedBy: 'lesson')]
-    private ?User $instructor = null;
+    public ?User $instructor = null;
 
     #[ORM\ManyToOne(inversedBy: 'lesson')]
     private ?Training $training = null;

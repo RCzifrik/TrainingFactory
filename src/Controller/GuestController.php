@@ -38,7 +38,6 @@ class GuestController extends AbstractController
         $entitymanager = $doctrine->getManager();
         $user = new User();
         $user->setRoles(["ROLE_MEMBER"]);
-        $user->get
         $form = $this->createForm(RegisterType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -61,9 +60,14 @@ class GuestController extends AbstractController
     }
 
     #[Route('/trainerOverzicht', name: 'guest_trainerOverzicht')]
-    public function trainerOverzicht(): Response
+    public function trainerOverzicht(ManagerRegistry $doctrine): Response
     {
-        return $this->render('guest/trainerOverzicht.html.twig');
+
+        $trainers = $doctrine->getRepository(User::class)->findBy(['isTrainer' => true]);
+
+        return $this->render('guest/trainerOverzicht.html.twig', [
+            'trainers' => $trainers
+        ]);
     }
 
     #[Route('/trainerDetail', name: 'guest_trainerDetail')]
@@ -81,7 +85,7 @@ class GuestController extends AbstractController
     #[Route('/trainingDetail', name: 'guest_trainingDetail')]
     public function trainingDetail(): Response
     {
-        return $this->render('guest/trainingDetail.html.twig');
+        return $this->render('guest/lessonDetail.html.twig');
     }
 
     #[Route('/redirect', name: 'redirect')]

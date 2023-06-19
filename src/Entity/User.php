@@ -16,7 +16,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    public ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
     private ?string $username = null;
@@ -49,19 +49,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $place = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $hiring_date = null;
+    public ?\DateTimeInterface $hiring_date = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $social_sec_number = null;
+    public ?int $social_sec_number = null;
 
     #[ORM\OneToMany(mappedBy: 'instructor', targetEntity: Lesson::class)]
-    private Collection $lesson;
+    public Collection $lesson;
 
     #[ORM\OneToMany(mappedBy: 'member', targetEntity: Registration::class)]
     private Collection $registration;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 12, scale: 2, nullable: true)]
     private ?string $salary = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $isTrainer = null;
 
     public function __construct()
     {
@@ -317,6 +320,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSalary(?string $salary): static
     {
         $this->salary = $salary;
+
+        return $this;
+    }
+
+    public function isIsTrainer(): ?bool
+    {
+        return $this->isTrainer;
+    }
+
+    public function setIsTrainer(?bool $isTrainer): static
+    {
+        $this->isTrainer = $isTrainer;
 
         return $this;
     }

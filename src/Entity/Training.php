@@ -23,7 +23,7 @@ class Training
     private ?int $duration = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
-    private ?string $extra_costs = null;
+    public ?string $extra_costs = null;
 
     #[ORM\OneToMany(mappedBy: 'training', targetEntity: Lesson::class)]
     private Collection $lesson;
