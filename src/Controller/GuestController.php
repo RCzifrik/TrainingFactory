@@ -63,10 +63,11 @@ class GuestController extends AbstractController
     #[Route('/trainerOverzicht', name: 'guest_trainerOverzicht')]
     public function trainerOverzicht(ManagerRegistry $doctrine): Response
     {
-        $trainer = $doctrine->getRepository(User::class)->findBy(['street' => ""]);
+
+        $trainers = $doctrine->getRepository(User::class)->findBy(['isTrainer' => true]);
 
         return $this->render('guest/trainerOverzicht.html.twig', [
-            'trainers' => $trainer
+            'trainers' => $trainers
         ]);
     }
 
@@ -90,7 +91,7 @@ class GuestController extends AbstractController
     #[Route('/trainingDetail', name: 'guest_trainingDetail')]
     public function trainingDetail(): Response
     {
-        return $this->render('guest/trainingDetail.html.twig');
+        return $this->render('guest/lessonDetail.html.twig');
     }
 
     #[Route('/redirect', name: 'redirect')]

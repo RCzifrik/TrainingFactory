@@ -1,0 +1,365 @@
+{
+  "steps" : null,
+  "testStepGroups" : [ {
+    "groupType" : 0,
+    "groupName" : "New descriptive group",
+    "testSteps" : [ {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "open",
+        "object" : {
+          "type" : "raw",
+          "object" : "",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "http://localhost:8000",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "click",
+        "object" : {
+          "type" : "raw",
+          "object" : "//*[@id=\"navbarNav\"]/ul/li[5]/a",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "type",
+        "object" : {
+          "type" : "raw",
+          "object" : "//*[@id=\"register_username\"]",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "JOSF",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "type",
+        "object" : {
+          "type" : "raw",
+          "object" : "//*[@id=\"register_password\"]",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "password",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "type",
+        "object" : {
+          "type" : "raw",
+          "object" : "//*[@id=\"register_firstname\"]",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "Joe",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "type",
+        "object" : {
+          "type" : "raw",
+          "object" : "//*[@id=\"register_street\"]",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "teststreet 92",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "type",
+        "object" : {
+          "type" : "raw",
+          "object" : "//*[@id=\"register_place\"]",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "Delft",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "click",
+        "object" : {
+          "type" : "raw",
+          "object" : "//*[@id=\"register_submit\"]",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "verifyURL",
+        "object" : {
+          "type" : "raw",
+          "object" : "",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "/login",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "type",
+        "object" : {
+          "type" : "raw",
+          "object" : "/html/body/div[1]/div/div[2]/div/form/input[1]",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "JOSF",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "type",
+        "object" : {
+          "type" : "raw",
+          "object" : "/html/body/div[1]/div/div[2]/div/form/input[2]",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "password",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "click",
+        "object" : {
+          "type" : "raw",
+          "object" : "/html/body/div[1]/div/div[2]/div/form/a/button",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    }, {
+      "version" : null,
+      "result" : null,
+      "message" : null,
+      "executionTimeMs" : 0,
+      "webAction" : {
+        "actionName" : "verifyURL",
+        "object" : {
+          "type" : "raw",
+          "object" : "",
+          "pageScannerQuery" : null,
+          "pageObjectReference" : null
+        },
+        "testdata" : {
+          "data" : "/member",
+          "type" : "text"
+        },
+        "takeScreenshot" : "0",
+        "screenshot" : null
+      },
+      "apiAction" : null,
+      "pageActionReference" : null,
+      "dataSheetReference" : null,
+      "testStepGroup" : null,
+      "contextId" : null,
+      "hasBreakpoint" : false,
+      "isDisabled" : false
+    } ],
+    "groupCondition" : null
+  } ],
+  "title" : "register as member fail",
+  "description" : "fail to register by leaving a required field blank",
+  "id" : "0kqxzkyevj",
+  "dataDrivenStorageId" : null,
+  "tags" : [ ]
+}

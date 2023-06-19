@@ -1,0 +1,29 @@
+{
+  "baseUrl" : null,
+  "activeEnvironmentId" : null,
+  "webAUTPreferences" : {
+    "browser" : "Remote Chrome",
+    "stopWhenElementNotFound" : false
+  },
+  "securitySettings" : {
+    "certificateSettings" : {
+      "storePath" : "C:\\Program Files\\JOSF\\api\\bin\\jdk8u312-b07\\jre\\lib\\security\\cacerts",
+      "storePassword" : "changeit",
+      "storeType" : "jks",
+      "sslCheckingDisabled" : false
+    },
+    "proxySettings" : {
+      "proxyHost" : null,
+      "proxyPort" : 8080,
+      "proxyUsername" : null,
+      "proxyPassword" : null,
+      "isEnabled" : false,
+      "isEnabledForDriverDownload" : false,
+      "isEnabledForBrowserProxy" : false,
+      "isEnabledForAPIRequests" : false,
+      "useCredentials" : false,
+      "autoDetect" : false
+    }
+  },
+  "licence" : null
+}

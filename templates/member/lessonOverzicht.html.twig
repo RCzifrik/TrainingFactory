@@ -1,0 +1,22 @@
+{% extends 'baseMember.html.twig' %}
+{% block body %}
+    <div class="container-lg my-4">
+        <h1 class="text-center mb-2">
+            {% for training in trainings %}
+                {{ training.description }}
+            {% endfor %}
+        </h1>
+        <div class="row">
+            {% for lesson in lessons %}
+                <div class="col-4 p-2">
+                    <div class="border border-dark rounded-2">
+                        <h4 class="text-center m-2">Les vind plaats op {{ lesson.date|date("d/m/Y") }} om {{ lesson.time|date("g:i:sA") }}</h4>
+                        <p class="text-center my-2">Les mag uiterlijk {{ lesson.max_people }} mensen hebben</p>
+                        <p class="text-center my-2">Deze les word gegeven door {{ lesson.instructor.firstname }} {{ lesson.instructor.preprovision }} {{ lesson.instructor.lastname }}</p>
+                        <a class="btn btn-primary text-center d-flex justify-content-center w-25 mx-auto mb-2" href="{{ path('member_trainingDetail', {id: lesson.id}) }}">details</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
