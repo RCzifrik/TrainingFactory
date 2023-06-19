@@ -1,0 +1,14 @@
+{
+  "port": 4444,
+  "newSessionWaitTimeout": -1,
+  "servlets" : [],
+  "withoutServlets": [],
+  "custom": {},
+  "throwOnCapabilityNotPresent": true,
+  "cleanUpCycle": 60,
+  "role": "hub",
+  "debug": true,
+  "browserTimeout": 0,
+  "timeout": 600,
+  "host" : "localhost"
+}
