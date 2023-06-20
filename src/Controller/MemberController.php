@@ -67,27 +67,36 @@ class MemberController extends AbstractController
     {
         $trainings = $doctrine->getRepository(Lesson::class)->findBy(['id' => $id]);
 
-        $userId = $user->getId();
-        $lessonId = $id;
+        $userId = $doctrine->getRepository(User::class)->findBy(['id' => $this->getUser()->getId()]);
 
         $entityManager = $doctrine->getManager();
         $registration = new Registration();
 
+        $message = "";
+
         $form = $this->createForm(SignUpType::class, $registration);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $registration->setMember($this->getUser($userId));
-            $registration->setLesson($lessonId);
+            $registration->setMember($userId[0]);
+            $registration->setLesson($trainings[0]);
             $registration->setPayment(9.99);
-            $entityManager->persist($registration);
-            $entityManager->flush();
-            return $this->redirectToRoute('member_home');
+
+            $dupeCheck = $doctrine->getRepository(Registration::class)->findBy(array('member' => $userId, 'lesson' => $trainings));
+            if ($dupeCheck = null) {
+                $entityManager->persist($registration);
+                $entityManager->flush();
+                return $this->redirectToRoute('member_home');
+            }
+            else {
+                $message = "Je bent al ingeschreven voor deze les";
+            }
         }
 
         return $this->renderForm('member/lessonDetail.html.twig', [
             'trainings' => $trainings,
             'form' => $form,
-            'userID' => $userId
+            'userID' => $userId,
+            'message' => $message
         ]);
     }
 
