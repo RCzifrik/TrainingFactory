@@ -1,0 +1,13 @@
+{% extends 'baseTrainer.html.twig' %}
+{% block body %}
+    <div class="container-lg my-5">
+        <h1>training details</h1>
+        {% for training in trainings %}
+            <h4>Deze {{ training.training.description}} les begint om {{ training.time|date("G:i:s") }} op {{ training.date|date("l") }} {{ training.date|date("d") }} {{ training.date|date("F") }} {{ training.date|date("Y") }}</h4>
+            <p><b>De les duurt {{ training.training.duration }} minuten</b></p>
+            <p>De les word gegeven door professionele trainer {{ training.instructor.firstname }} {{ training.instructor.preprovision }} {{ training.instructor.lastname }}</p>
+        {% endfor %}
+        <a href="#" class="btn btn-warning border border-dark">Updaten</a>
+        <a href="#" class="btn btn-danger border border-dark">Deleten</a>
+    </div>
+{% endblock %}

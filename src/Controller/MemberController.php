@@ -32,7 +32,7 @@ class MemberController extends AbstractController
         ]);
     }
 
-    #[Route('/member/trainers_details', name: 'member_trainerDetail')]
+    #[Route('/member/trainer_details/{id}', name: 'member_trainerDetail')]
     public function trainerDetail(): Response
     {
         return $this->render('member/trainerDetail.html.twig');

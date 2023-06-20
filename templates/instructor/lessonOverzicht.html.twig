@@ -1,0 +1,48 @@
+{% extends 'baseTrainer.html.twig' %}
+{% block body %}
+    <div class="container-lg my-4">
+        <h1 class="text-center mb-2">
+            {% for training in trainings %}
+                {{ training.description }}
+            {% endfor %}
+        </h1>
+        <a href="{{ path('instructor_trainingInsert') }}" class="btn btn-primary">Les toevoegen</a>
+        <div class="row">
+            {% for lesson in lessons %}
+                <div class="col-4 p-2">
+                    <div class="border border-dark rounded-2">
+                        <h4 class="text-center m-2">Les vind plaats op {{ lesson.date|date("d/m/Y") }} om {{ lesson.time|date("g:i:sA") }}</h4>
+                        <p class="text-center my-2">Les mag uiterlijk {{ lesson.max_people }} mensen hebben</p>
+                        <p class="text-center my-2">Deze les word gegeven door {{ lesson.instructor.firstname }} {{ lesson.instructor.preprovision }} {{ lesson.instructor.lastname }}</p>
+                        <div class="d-flex justify-content-between px-3 pb-2">
+                            <a class="btn btn-primary text-center w-25" href="{{ path('instructor_trainingDetails', {id: lesson.id}) }}">details</a>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger text-center w-25" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Delete
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Deze les deleten?</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            Weet je het zeker?
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-between px-3">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-danger">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
