@@ -57,7 +57,7 @@ class InstructorController extends AbstractController
         $trainings = $doctrine->getRepository(Training::class)->findBy(['id' => $id]);
 
 
-       return $this->render('instructor/lessonOverzicht.html.twig', [
+       return $this->renderForm('instructor/lessonOverzicht.html.twig', [
            'lessons' => $lessons,
            'trainings' => $trainings
        ]);
@@ -79,7 +79,8 @@ class InstructorController extends AbstractController
         }
 
         return $this->renderForm('instructor/lessonDetail.html.twig', [
-            'trainings' => $trainings
+            'trainings' => $trainings,
+            'form' => $form
         ]);
     }
 

@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 class MemberController extends AbstractController
 {
@@ -63,7 +64,7 @@ class MemberController extends AbstractController
     }
 
     #[Route('/member/training_details/{id}', name: 'member_trainingDetail')]
-    public function trainingDetail(ManagerRegistry $doctrine, int $id, Request $request, UserInterface $user): Response
+    public function trainingDetail(ManagerRegistry $doctrine, int $id, Request $request): Response
     {
         $trainings = $doctrine->getRepository(Lesson::class)->findBy(['id' => $id]);
 
@@ -80,7 +81,6 @@ class MemberController extends AbstractController
             $registration->setMember($userId[0]);
             $registration->setLesson($trainings[0]);
             $registration->setPayment(9.99);
-
             $dupeCheck = $doctrine->getRepository(Registration::class)->findBy(array('member' => $userId, 'lesson' => $trainings));
             if ($dupeCheck = null) {
                 $entityManager->persist($registration);

@@ -8,6 +8,34 @@
             <p>De les word gegeven door professionele trainer {{ training.instructor.firstname }} {{ training.instructor.preprovision }} {{ training.instructor.lastname }}</p>
         {% endfor %}
         <a href="#" class="btn btn-warning border border-dark">Updaten</a>
-        <a href="#" class="btn btn-danger border border-dark">Deleten</a>
+        <br>
+        <div class="my-3">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger text-center w-25" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Delete
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Deze les deleten?</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            Weet je het zeker?
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between px-3">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            {{ form_start(form) }}
+                                {{ form_widget(form.delete) }}
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 {% endblock %}
