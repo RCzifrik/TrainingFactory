@@ -1,0 +1,17 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block body %}
+    <div class="container-lg my-5">
+        <h1>training overzicht</h1>
+        <div class="row">
+            {% for training in trainings %}
+                <div class="col-4 px-2">
+                    <div class="border border-dark rounded-2">
+                        <h2 class="text-center my-2">{{ training.description }}</h2>
+                        <h4 class="text-center my-2">€{{ (training.extra_costs)|number_format(2, ',', '.') }}</h4>
+                        <a class="btn btn-outline-primary mt-3 mb-2 w-25 mx-auto d-flex text-center" href="{{ path('instructor_trainingSorted', {id: training.id}) }}">Go!</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
