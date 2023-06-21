@@ -228,12 +228,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getHiringDate(): ?string
+    public function getHiringDate(): ?\DateTimeInterface
     {
         return $this->hiring_date;
     }
 
-    public function setHiringDate($hiring_date): static
+    public function setHiringDate(?\DateTimeInterface $hiring_date): static
     {
         $this->hiring_date = $hiring_date;
 

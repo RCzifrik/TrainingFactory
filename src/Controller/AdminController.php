@@ -55,7 +55,7 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/trainer_update/{id}', name: 'admin_trainerUpdate')]
-    public function trainerUpdate(ManagerRegistry $doctrine, Request $request, int $id):Response
+    public function trainerUpdate(ManagerRegistry $doctrine, Request $request, int $id, UserPasswordHasherInterface $passwordHasher):Response
     {
 
         $trainer = $doctrine->getRepository(User::class)->find($id);
@@ -65,6 +65,8 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $trainer = $form->getData();
+            $hashedPassword = $passwordHasher->hashPassword($trainer, $trainer->getPassword());
+            $trainer->setPassword($hashedPassword);
             $entitymanager->flush();
             return $this->redirectToRoute('admin_trainerOverzicht');
         }
