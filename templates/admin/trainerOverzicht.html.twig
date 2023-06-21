@@ -2,13 +2,16 @@
 {% block body %}
     <div class="container-lg my-5">
         <h1 class="text-center">Ontdek onze trainers!</h1>
+        <div class="d-flex justify-content-center">
+            <a href="{{ path('admin_trainerInsert') }}" class="btn btn-primary text-center">Trainer toevoegen</a>
+        </div>
         <div class="row">
             {% for trainer in trainers %}
                 <div class="col-2"></div>
                 <div class="col-8 border border-dark rounded-4 my-2 py-2">
                     <h3 class="text-center my-1">{{ trainer.firstname }} {{ trainer.preprovision }} {{ trainer.lastname }}</h3>
                     <p class="text-center my-1">This trainer is very cool!</p>
-                    <a class="btn btn-primary w-25 mx-auto d-flex justify-content-center" href="#">See more</a>
+                    <a class="btn btn-primary w-25 mx-auto d-flex justify-content-center" href="{{ path('admin_trainerDetails', {id: trainer.id}) }}">See more</a>
                 </div>
                 <div class="col-2"></div>
             {% endfor %}

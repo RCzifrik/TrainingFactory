@@ -6,11 +6,14 @@ use App\Entity\Lesson;
 use App\Entity\Training;
 use App\Entity\User;
 use App\Form\DeleteType;
+use App\Form\InstructorType;
 use App\Form\LessonType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
@@ -32,9 +35,66 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/trainer_details/{id}', name: 'admin_trainerDetails')]
-    public function trainerDetails(int $id): Response
+    public function trainerDetails(ManagerRegistry $doctrine, Request $request, int $id): Response
     {
-        return $this->render('admin/trainerDetail.html.twig');
+        $trainerDelete = $doctrine->getRepository(User::class)->find($id);
+        $trainerDetails = $doctrine->getRepository(User::class)->findBy(['id' => $id]);
+        $entitymanager = $doctrine->getManager();
+
+        $form = $this->createForm(DeleteType::class, $trainerDelete);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entitymanager->remove($trainerDelete);
+            $entitymanager->flush();
+            return $this->redirectToRoute('admin_trainerOverzicht');
+        }
+        return $this->renderForm('admin/trainerDetail.html.twig', [
+            'trainers' => $trainerDetails,
+            'form' => $form
+        ]);
+    }
+
+    #[Route('/admin/trainer_update/{id}', name: 'admin_trainerUpdate')]
+    public function trainerUpdate(ManagerRegistry $doctrine, Request $request, int $id):Response
+    {
+
+        $trainer = $doctrine->getRepository(User::class)->find($id);
+        $entitymanager = $doctrine->getManager();
+
+        $form = $this->createForm(InstructorType::class, $trainer);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $trainer = $form->getData();
+            $entitymanager->flush();
+            return $this->redirectToRoute('admin_trainerOverzicht');
+        }
+
+        return $this->renderForm('admin/trainerUpdate.html.twig', [
+            'form' => $form
+        ]);
+    }
+
+    #[Route('/admin/trainer_insert', name: 'admin_trainerInsert')]
+    public function trainerInsert(ManagerRegistry $doctrine, Request $request, UserPasswordHasherInterface $passwordHasher):Response
+    {
+        $entitymanager = $doctrine->getManager();
+        $trainer = new User();
+        $trainer->setRoles(["ROLE_INSTRUCTOR"]);
+        $trainer->setIsTrainer(true);
+        $form = $this->createForm(InstructorType::class, $trainer);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $trainer = $form->getData();
+            $hashedPassword = $passwordHasher->hashPassword($trainer, $trainer->getPassword());
+            $trainer->setPassword($hashedPassword);
+            $entitymanager->persist($trainer);
+            $entitymanager->flush();
+            return $this->redirectToRoute('admin_trainerOverzicht');
+        }
+
+        return $this->renderForm('admin/trainerInsert.html.twig', [
+            'form' => $form
+        ]);
     }
 
     #[Route('/admin/trainingen', name: 'admin_allTrainings')]

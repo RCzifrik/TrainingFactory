@@ -1,7 +1,38 @@
 {% extends 'baseAdmin.html.twig' %}
 {% block body %}
     <div class="container-lg my-5">
-        <h1>trainer details</h1>
-        <p>Misschien niet nodig.</p>
+        <h1 class="text-center">trainer details</h1>
+        {% for trainer in trainers %}
+            <h2>{{ trainer.firstname }} {{ trainer.preprovision }} {{ trainer.lastname }}</h2>
+            <p><b>Deze trainer verdient </b>€{{ trainer.salary|number_format('2', ',', '.') }}</p>
+            <p><b>Social security number: </b>{{ trainer.social_sec_number }}</p>
+            <p><b>Hire date: </b>{{ trainer.hiring_date|date("d/M/Y") }}</p>
+            <a href="{{ path('admin_trainerUpdate', {id: trainer.id}) }}" class="btn btn-warning border border-dark">Update trainer info</a>
+        {% endfor %}
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger text-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Delete
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Deze les deleten?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        Weet je het zeker?
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between px-3">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        {{ form_start(form) }}
+                        {{ form_widget(form.delete) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
